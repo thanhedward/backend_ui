@@ -14,7 +14,8 @@ async def add_new_comment(new_comment: Comment) -> Comment:
 
 
 async def find_comment_des(idDes: int) -> List[Comment]:
-    comments_destination = await comment_collection.find({"idDestination": idDes}).sort("createDate", pymongo.DESCENDING).to_list()
+    query = comment_collection.find({"idDestination": idDes}).sort([("createDate", pymongo.DESCENDING)])
+    comments_destination = await query.to_list()
     return comments_destination
 
 
