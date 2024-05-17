@@ -11,3 +11,4 @@ pydantic
 beanie
 pyyaml
 numpy
+pymongo

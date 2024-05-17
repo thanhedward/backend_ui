@@ -1,6 +1,7 @@
 from typing import List, Union
 
 from beanie import PydanticObjectId
+import pymongo
 
 from models.comment import Comment
 
@@ -13,7 +14,7 @@ async def add_new_comment(new_comment: Comment) -> Comment:
 
 
 async def find_comment_des(idDes: int) -> List[Comment]:
-    comments_destination = await comment_collection.find({"idDestination": idDes}).to_list()
+    comments_destination = await comment_collection.find({"idDestination": idDes}).sort("createDate", pymongo.DESCENDING).to_list()
     return comments_destination
 
 
